@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->comment('用户名');
-            $table->string('email')->unique()->comment('邮箱地址');
+            $table->string('email')->comment('邮箱地址');
             $table->string('password')->comment('密码');
             $table->boolean('is_banned')->default(0)->comment('是否禁用:0否,1禁用');
             $table->rememberToken();
