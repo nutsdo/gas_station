@@ -58,7 +58,7 @@ class GasStationController extends Controller
                 )  AS price')
             ]);
             if($type=='map'){
-                $stations = $query->orderBy($order,'ASC')->having('distance', '<', 50)->get();
+                $stations = $query->orderBy($order,'ASC')->get();
             }elseif($type=='list'){
                 if($order == 'price'){
                     $sort = 'ASC';

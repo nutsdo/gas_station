@@ -71,7 +71,7 @@
     {!! $errors->first('is_banned') !!}
 </div>
 <div class="form-group">
-    {!! Form::label('油站地址', '油站地址',['class'=>'control-label col-sm-2']) !!}
+    {!! Form::label('详细地址', '详细地址',['class'=>'control-label col-sm-2']) !!}
     <div id="distpicker" class="col-sm-10 form-inline" data-toggle="distpicker">
         @if($is_create)
             {!! Form::select('province', [], null, [ 'class' => 'form-control', 'id'=>'province', 'data-province'=>'---- 选择省 ----' ]) !!}
@@ -85,7 +85,7 @@
         @endif
         {!! Form::text('address',null,[
             'class'=>'form-control',
-            'placeholder'=>'请输入油站地址'
+            'placeholder'=>'请输入详细地址'
         ]) !!}
         <a href="javascript:;" id="search-location" class="btn btn-primary btn-single btn-sm">搜索位置</a>
     </div>
