@@ -20,10 +20,12 @@ html,body{
     min-height: 667px;
 }
 .station-item{
+    width: 100%;
     float: left;
 }
 .station-item .thumbnail{
     width:25%;
+    height: 60px;
     display: block;
     float: left;
     border: none;
