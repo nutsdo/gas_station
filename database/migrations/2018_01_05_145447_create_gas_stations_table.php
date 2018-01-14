@@ -15,7 +15,7 @@ class CreateGasStationsTable extends Migration
 	{
 		Schema::create('gas_stations', function(Blueprint $table) {
             $table->increments('id');
-			$table->string('name')->unique()->comment('油站名称');
+			$table->string('name')->comment('油站名称');
 			$table->string('cover')->comment('油站图片');
 			$table->string('lng',20)->default(0)->comment('经度');
 			$table->string('lat',20)->default(0)->comment('纬度');
