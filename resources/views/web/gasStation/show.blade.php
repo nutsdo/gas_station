@@ -10,7 +10,7 @@
 @section('content')
     <div class="station-info">
         <div class="thumbnail">
-            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515692828378&di=2a1b4224a0c77034a9f023559c5a2996&imgtype=0&src=http%3A%2F%2Fpic.yesky.com%2FuploadImages%2F2015%2F215%2F43%2F84K8MQ5DWP2G.jpg" alt="">
+            {{ Html::image($station->cover) }}
             <div class="caption clearfix">
                 <div class="detail">
                     <h4>{{ $station->name }}</h4>

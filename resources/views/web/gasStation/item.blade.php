@@ -11,7 +11,7 @@
     <div class="station-item">
 
         <a href="{{ route('station.show',$station->id) }}" class="thumbnail">
-            <img src="http://yese.com/uploads/articles/20161023/image-1.jpg" data-src="uploads/articles/20161023/image-1.jpg">
+            {{ Html::image($station->cover) }}
         </a>
         <div class="info">
             <div class="name">{{ $station->name }}</div>
