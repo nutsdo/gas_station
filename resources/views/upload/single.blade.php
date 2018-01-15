@@ -150,6 +150,8 @@
         var input = $('#uploadForm').data('path-input');
 
         $('form input[name='+input+']').val(data.path);
+        $('#pic_path').attr('src', '/'+data.path);
+        $('#preview_pic').removeClass('hide');
         //关闭模态框
         $('#upload').modal('hide');
 

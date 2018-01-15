@@ -38,14 +38,14 @@
 
     {!! $errors->first('cover') !!}
 </div>
-@if($path)
-    <div class="form-group" id="preview_pic">
-        <div class="col-sm-10 col-sm-offset-2">
 
-        {!! Form::image($path,null,['id'=>'pic_path','width'=>'80']) !!}
-        </div>
+<div class="form-group @if($is_create) hide @endif" id="preview_pic">
+    <div class="col-sm-10 col-sm-offset-2">
+
+    {!! Html::image($path,null,['id'=>'pic_path','width'=>'80']) !!}
     </div>
-@endif
+</div>
+
 
 <div class="form-group">
     {!! Form::label('油站电话', '油站电话',['class'=>'control-label col-sm-2']) !!}

@@ -24,7 +24,9 @@
                 </div>
                 <div class="go">
                     {{ Html::image('assets/images/station/go.png',null,['width'=>40]) }}
-                    <a href="#">去这里</a>
+                    <a href="javascript:;" class="go-there"
+                       data-destination="{{ $station->lat.','.$station->lng }}" data-city="{{ $station->city }}"
+                    >去这里</a>
                 </div>
             </div>
             <p>
@@ -92,7 +94,7 @@
                     @endfor
                 </p>
             </h5>
-            服务态度好
+            {{ $comment->content }}
         </div>
     </div>
     @endforeach
@@ -104,6 +106,7 @@
 @endpush
 
 @push('scripts')
+{!! Html::script('http://api.map.baidu.com/api?v=2.0&ak=GjQkCLPRWvstG55SFWtyeFdj9xTmfKvF') !!}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
 <script language="javascript">
     var mySwiper = new Swiper('.swiper-container',{
@@ -113,5 +116,34 @@
     $('.default-comment').on('click', function(e){
         location.href = "{{ route('station.comments.create',$station->id) }}" + "?comment=" + $(e.target).text();
     })
+</script>
+<script type="text/javascript">
+
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r){
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+
+            var latCurrent = r.point.lat;
+            var lngCurrent = r.point.lng;
+            console.log('我的位置：'+ latCurrent + ',' + lngCurrent);
+
+            $("body").on('click', '.go', function(e){
+                var $this = $(e.target);
+
+                console.log(latCurrent)
+                console.log(lngCurrent)
+                var destination = $this.data('destination');
+                var city = $this.data('city');
+                //alert($this.attr('width'));
+                location.href="http://api.map.baidu.com/direction?origin="+latCurrent+","+lngCurrent+"&destination="+destination+"&mode=driving&region="+city+"&output=html";
+            });
+
+
+        } else {
+            alert('failed'+this.getStatus());
+        }
+    },{enableHighAccuracy: true});
+
+
 </script>
 @endpush

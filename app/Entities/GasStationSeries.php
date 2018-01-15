@@ -21,4 +21,6 @@ class GasStationSeries extends Model implements Transformable
 
     protected $guarded = [];
 
+    public $timestamps = false;
+
 }

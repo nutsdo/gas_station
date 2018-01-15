@@ -46,7 +46,6 @@
                 <th>油号名称</th>
                 <th>油号</th>
                 <th>油价</th>
-                <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -56,7 +55,6 @@
                 <th>油号名称</th>
                 <th>油号</th>
                 <th>油价</th>
-                <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </tfoot>
@@ -67,7 +65,6 @@
                     <td>{{ $series->serial_name }}</td>
                     <td>{{ $series->serial_number }}</td>
                     <td>{{ $series->pivot->price }}</td>
-                    <td>{{ $series->created_at }}</td>
                     <td>
                         <a href="{{ route('gasStations.series.edit',['gasStation'=> $station->id, 'series'=> $series->id]) }}" class="btn btn-success btn-sm btn-icon icon-left">
                             编辑

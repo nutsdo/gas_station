@@ -74,7 +74,8 @@ class GasStationSeriesController extends Controller
 
                 return response()->json($response);
             }
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('gasStations.index', ['gasStationId'=>$gasStationId])->with('message', $response['message']);
+
         } catch (\Exception $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -127,16 +128,18 @@ class GasStationSeriesController extends Controller
             $gasStationSeries = GasStationSeries::where('gas_station_id', $gasStationId)
                                           ->where('series_id', $id)->first();
             if($gasStationSeries){
-                $gasStationSeries->update(['price' => $price]);
+
+                GasStationSeries::where('gas_station_id', $gasStationId)
+                    ->where('series_id', $id)->update(['price'=> $price]);
+
                 $response = [
-                    'message' => 'GasStation created.',
+                    'message' => '油号价格已保存.',
                     'data'    => $gasStationSeries->toArray(),
                 ];
 
-
             }else{
                 $response = [
-                    'message' => '不存在.',
+                    'message' => '油号不存在.',
                     'data'    => $gasStationSeries->toArray(),
                 ];
             }
@@ -152,6 +155,7 @@ class GasStationSeriesController extends Controller
                     'message' => $e->getMessage()
                 ]);
             }
+            dd($e->getMessage());
             return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
     }

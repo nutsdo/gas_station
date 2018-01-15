@@ -24,9 +24,10 @@
 
     map.enableScrollWheelZoom();
 
-    //    var myIcon = new BMap.Icon("myicon.png",new BMap.Size(30,30),{
-    //        anchor: new BMap.Size(10,10)
-    //    });
+        var myIcon = new BMap.Icon("{{ url('/assets/images/station/my-icon.png') }}",new BMap.Size(30,30),{
+            anchor: new BMap.Size(15,30),
+            imageSize: new BMap.Size(30,30)
+        });
 
     //    var opts = {
     //        width : 250,     // 信息窗口宽度
@@ -37,15 +38,13 @@
     var geolocation = new BMap.Geolocation();
     geolocation.getCurrentPosition(function(r){
         if(this.getStatus() == BMAP_STATUS_SUCCESS){
-            var mk = new BMap.Marker(r.point);
+            var mk = new BMap.Marker(r.point,{icon:myIcon});
             map.addOverlay(mk);
             map.panTo(r.point);//地图中心点移到当前位置
             map.centerAndZoom(r.point,13);
             var latCurrent = r.point.lat;
             var lngCurrent = r.point.lng;
-            console.log('我的位置：'+ latCurrent + ',' + lngCurrent);
-
-            var marker=new BMap.Marker(r.point);
+//            console.log('我的位置：'+ latCurrent + ',' + lngCurrent);
 
             //添加标注
             $.ajax({
@@ -53,10 +52,9 @@
                 type : 'GET',
                 data : {lng:lngCurrent,lat:latCurrent},
                 success: function(data){
-                    console.log(data)
 
                     $.each(data.data,function(k,v){
-                        console.log(data.data);
+
                         var marker = new BMap.Marker(new BMap.Point(v.lng, v.lat));  // 创建标注
                         var click = 'goThere(this)';
                         var sContent =
@@ -71,8 +69,6 @@
                 },
                 dataType:'json'
             });
-
-            map.addOverlay(marker);
 
         }
         else {
