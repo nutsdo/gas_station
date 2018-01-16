@@ -18,6 +18,7 @@
 @push('scripts')
 {!! Html::script('http://api.map.baidu.com/api?v=2.0&ak=GjQkCLPRWvstG55SFWtyeFdj9xTmfKvF') !!}
 {!! Html::script('assets/js/Scrollload.js') !!}
+{!! Html::script('js/custom.js') !!}
 
 <script type="text/javascript">
 

@@ -14,7 +14,9 @@
             {{ Html::image($station->cover) }}
         </a>
         <div class="info">
-            <div class="name">{{ $station->name }}</div>
+            <a href="{{ route('station.show',$station->id) }}">
+                <div class="name">{{ $station->name }}</div>
+            </a>
             <div class="city">{{ $station->province.$station->city }}</div>
         </div>
         <div class="location">
@@ -23,7 +25,7 @@
                 {{ round($station->distance, 2) }}km
             </div>
             <div class="go" data-destination="{{ $station->lat.','.$station->lng }}" data-city="{{ $station->city }}">
-                {{ Html::image('assets/images/station/go.png',null,['width'=>20]) }}
+                {{ Html::image('assets/images/station/goto.png',null,['width'=>20]) }}
                 去这里
             </div>
         </div>

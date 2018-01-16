@@ -1,19 +1,29 @@
 html,body{
     height: 100%;
+    background-color: #f5f8fa;
 }
-
+.container{
+     padding-left: 0;
+     padding-right: 0;
+}
+.station-order{
+    padding-left: 20px;
+}
 .station-nav{
     text-align: center;
     margin:0;
 }
 .station-nav li{
     display: inline-block;width: 49%;text-align:center;
-    /*border-bottom: solid #00b4f5 2px;*/
+    border-bottom: solid #ccc 2px;
 }
-.station-nav li .active{
+.station-nav .active{
     border-bottom: solid #00b4f5 2px;
 }
-
+#stations{
+    padding: 5px;
+    background: #fff;
+}
 
 .baidu-map{
     height:100%;

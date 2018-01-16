@@ -24,9 +24,13 @@
 
     map.enableScrollWheelZoom();
 
-        var myIcon = new BMap.Icon("{{ url('/assets/images/station/my-icon.png') }}",new BMap.Size(30,30),{
-            anchor: new BMap.Size(15,30),
+        let myIcon = new BMap.Icon("{{ url('/assets/images/station/my-location.png') }}",new BMap.Size(30,30),{
+            //anchor: new BMap.Size(15,30),
             imageSize: new BMap.Size(30,30)
+        });
+        let gsIcon = new BMap.Icon("{{ url('/assets/images/station/gs-station.png') }}",new BMap.Size(30,30),{
+            anchor: new BMap.Size(19,25),
+            imageSize: new BMap.Size(40,40)
         });
 
     //    var opts = {
@@ -55,7 +59,7 @@
 
                     $.each(data.data,function(k,v){
 
-                        var marker = new BMap.Marker(new BMap.Point(v.lng, v.lat));  // 创建标注
+                        var marker = new BMap.Marker(new BMap.Point(v.lng, v.lat), {icon:gsIcon});  // 创建标注
                         var click = 'goThere(this)';
                         var sContent =
                                 "<h5 style='margin:0 0 5px 0;padding:0.2em 0'>"+ v.name +"</h5>" +

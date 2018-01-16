@@ -48,14 +48,24 @@
 
 
 <div class="form-group">
-    {!! Form::label('油站电话', '油站电话',['class'=>'control-label col-sm-2']) !!}
+    {!! Form::label('手机号码', '手机号码',['class'=>'control-label col-sm-2']) !!}
     <div class="col-sm-10">
         {!! Form::text('phone',null,[
             'class'=>'form-control',
-            'placeholder'=>'请输入油站电话'
+            'placeholder'=>'请输入手机号码'
         ]) !!}
     </div>
     {!! $errors->first('phone') !!}
+</div>
+<div class="form-group">
+    {!! Form::label('座机号码', '座机号码',['class'=>'control-label col-sm-2']) !!}
+    <div class="col-sm-10">
+        {!! Form::text('telephone',null,[
+            'class'=>'form-control',
+            'placeholder'=>'请输入座机号码'
+        ]) !!}
+    </div>
+    {!! $errors->first('telephone') !!}
 </div>
 
 <div class="form-group">
