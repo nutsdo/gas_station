@@ -77,7 +77,7 @@
         //anchor: new BMap.Size(15,30),
         imageSize: new BMap.Size(30,30)
     });
-    let gsIcon = new BMap.Icon("{{ url('/assets/images/station/gs-station.png') }}",new BMap.Size(30,30),{
+    let gsIcon = new BMap.Icon("{{ url('/assets/images/station/gs-station.png') }}",new BMap.Size(40,40),{
         anchor: new BMap.Size(19,25),
         imageSize: new BMap.Size(40,40)
     });
@@ -85,7 +85,7 @@
         if(this.getStatus() == BMAP_STATUS_SUCCESS){
             var mk = new BMap.Marker(r.point, {icon:myIcon});
             map.addOverlay(mk);
-            //map.panTo(r.point);
+            map.panTo(r.point);
             //alert('您的位置：'+r.point.lng+','+r.point.lat);
             //坐标
             var point = new BMap.Point(r.point.lng,r.point.lat);
@@ -97,7 +97,14 @@
         }
     },{enableHighAccuracy: true})
 
-
+    //定位到当前加油站
+    let current_lng = "{{ $gasStation->lng }}";
+    let current_lat = "{{ $gasStation->lat }}";
+    let current_point = new BMap.Point(current_lng,current_lat);
+    var current_mk = new BMap.Marker(current_point, {icon:gsIcon});
+    //map.centerAndZoom(current_point, 15);
+    map.panTo(current_point);
+    map.addOverlay(current_mk);
 
     $('#search-location').click(function(){
         // 创建地址解析器实例

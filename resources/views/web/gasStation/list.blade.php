@@ -6,6 +6,13 @@
  * Time: 下午10:33
  */
 ?>
+<div class="container-fluid">
+    <div class="row-fluid scrollload-container">
+        <div class="span12 scrollload-content">
+            @include('web.gasStation.item')
+        </div>
+    </div>
+</div>
 <div class="list-group" id="stations">
     <div class="scrollload-container">
         <div class="scrollload-content">

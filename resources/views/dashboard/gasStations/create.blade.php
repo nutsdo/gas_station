@@ -77,7 +77,7 @@
         //anchor: new BMap.Size(15,30),
         imageSize: new BMap.Size(30,30)
     });
-    let gsIcon = new BMap.Icon("{{ url('/assets/images/station/gs-station.png') }}",new BMap.Size(30,30),{
+    let gsIcon = new BMap.Icon("{{ url('/assets/images/station/gs-station.png') }}",new BMap.Size(40,40),{
         anchor: new BMap.Size(19,25),
         imageSize: new BMap.Size(40,40)
     });
