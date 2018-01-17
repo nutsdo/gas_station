@@ -9,7 +9,7 @@ html,body{
 }
 .media-object {
     width: 80px;
-    min-height: 60px;
+    /*min-height: 60px;*/
     display: block;
 }
 .station-order{
