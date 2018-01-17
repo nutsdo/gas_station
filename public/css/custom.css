@@ -7,9 +7,9 @@ html,body{
      padding-left: 0;
      padding-right: 0;
 }
-.media-object {
+.container-fluid .media-object {
     width: 80px;
-    /*min-height: 60px;*/
+    min-height: 60px;
     display: block;
 }
 .station-order{
