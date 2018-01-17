@@ -18,7 +18,7 @@
 
     var myCity = new BMap.LocalCity();  //当前城市
     myCity.get(function(r){
-        $('title').text(r.name);
+        //$('title').text(r.name);
         map.setCenter(r.name);
     })
 

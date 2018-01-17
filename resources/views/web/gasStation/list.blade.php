@@ -20,22 +20,22 @@
 
 <script type="text/javascript">
 
-    let latCurrent;
-    let lngCurrent;
     var geolocation = new BMap.Geolocation();
     geolocation.getCurrentPosition(function(r){
         if(this.getStatus() == BMAP_STATUS_SUCCESS){
 
             var latCurrent = r.point.lat;
             var lngCurrent = r.point.lng;
-            console.log('我的位置：'+ latCurrent + ',' + lngCurrent);
+            //console.log('我的位置：'+ latCurrent + ',' + lngCurrent);
 
             $("body").on('click', '.go', function(e){
                 var $this = $(e.target);
-
-                console.log(latCurrent)
-                console.log(lngCurrent)
+//                console.log($this)
+//
+//                console.log(latCurrent)
+//                console.log(lngCurrent)
                 var destination = $this.data('destination');
+
                 var city = $this.data('city');
                 //alert($this.attr('width'));
                 location.href="http://api.map.baidu.com/direction?origin="+latCurrent+","+lngCurrent+"&destination="+destination+"&mode=driving&region="+city+"&output=html";
@@ -49,7 +49,7 @@
                 container: document.querySelector('.scrollload-container'),
                 content: document.querySelector('.scrollload-content'),
                 loadMore: function(sl) {
-                    console.log('page:'+page +'--last_page:'+last_page);
+//                    console.log('page:'+page +'--last_page:'+last_page);
                     if (page > last_page) {
                         // 没有数据的时候需要调用noMoreData
                         sl.noMoreData()
