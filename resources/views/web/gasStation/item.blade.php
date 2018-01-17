@@ -21,16 +21,24 @@
                     {{ round($station->distance, 2) }}km
                 </span>
             </h5>
-            <p>
+            <span>
                 联系电话:{{ $station->telephone?$station->telephone:$station->phone }}
-            </p>
+            </span>
             <p>
                 {{ $station->province.$station->city }}
-                <span class="go pull-right" data-destination="{{ $station->lat.','.$station->lng }}" data-city="{{ $station->city }}">
-                    {{ Html::image('assets/images/station/goto.png',null,['width'=>20,'data-destination'=>"$station->lat,$station->lng",'data-city'=>$station->city]) }}
-                    去这里
-                </span>
             </p>
+        </div>
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default go"
+                        data-destination="{{ $station->lat.','.$station->lng }}" data-city="{{ $station->city }}"
+                >
+                    到这去
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <a href="tel:{{ $station->telephone?$station->telephone:$station->phone }}" type="button" class="btn btn-default">电话</a>
+            </div>
         </div>
     </div>
 
