@@ -13,15 +13,6 @@
         </div>
     </div>
 </div>
-<div class="list-group" id="stations">
-    <div class="scrollload-container">
-        <div class="scrollload-content">
-            @include('web.gasStation.item')
-        </div>
-
-    </div>
-    <div id="last" class="clearfix"></div>
-</div>
 @push('scripts')
 {!! Html::script('http://api.map.baidu.com/api?v=2.0&ak=GjQkCLPRWvstG55SFWtyeFdj9xTmfKvF') !!}
 {!! Html::script('assets/js/Scrollload.js') !!}

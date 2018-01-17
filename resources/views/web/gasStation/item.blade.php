@@ -10,16 +10,16 @@
 @foreach($stations as $key => $station)
 
     <div class="media">
-        <a href="#" class="pull-left">
+        <a href="{{ route('station.show',$station->id) }}" class="pull-left">
             {{ Html::image($station->cover,null,["class"=>"media-object"]) }}
         </a>
         <div class="media-body">
             <h5 class="media-heading">
-                {{ $station->name }}
-                <a href="{{ route('station.show',$station->id) }}" class="pull-right dx-font-m">
+                <a href="{{ route('station.show',$station->id) }}">{{ $station->name }}</a>
+                <span class="pull-right dx-font-m">
                     {{ Html::image('assets/images/station/my-icon.png',null,['width'=>15]) }}
                     {{ round($station->distance, 2) }}km
-                </a>
+                </span>
             </h5>
             <p>
                 联系电话:{{ $station->telephone?$station->telephone:$station->phone }}
