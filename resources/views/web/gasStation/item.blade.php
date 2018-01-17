@@ -27,7 +27,7 @@
             <p>
                 {{ $station->province.$station->city }}
                 <span class="go pull-right" data-destination="{{ $station->lat.','.$station->lng }}" data-city="{{ $station->city }}">
-                    {{ Html::image('assets/images/station/goto.png',null,['width'=>20]) }}
+                    {{ Html::image('assets/images/station/goto.png',null,['width'=>20,'data-destination'=>"$station->lat,$station->lng",'data-city'=>$station->city]) }}
                     去这里
                 </span>
             </p>
