@@ -73,12 +73,19 @@
     map.addControl(top_right_navigation);
 
     var geolocation = new BMap.Geolocation();
-
+    let myIcon = new BMap.Icon("{{ url('/assets/images/station/my-location.png') }}",new BMap.Size(30,30),{
+        //anchor: new BMap.Size(15,30),
+        imageSize: new BMap.Size(30,30)
+    });
+    let gsIcon = new BMap.Icon("{{ url('/assets/images/station/gs-station.png') }}",new BMap.Size(30,30),{
+        anchor: new BMap.Size(19,25),
+        imageSize: new BMap.Size(40,40)
+    });
     geolocation.getCurrentPosition(function(r){
         if(this.getStatus() == BMAP_STATUS_SUCCESS){
-            var mk = new BMap.Marker(r.point);
+            var mk = new BMap.Marker(r.point, {icon:myIcon});
             map.addOverlay(mk);
-            map.panTo(r.point);
+            //map.panTo(r.point);
             //alert('您的位置：'+r.point.lng+','+r.point.lat);
             //坐标
             var point = new BMap.Point(r.point.lng,r.point.lat);
@@ -101,13 +108,73 @@
         myGeo.getPoint(address, function(point){
             if (point) {
                 map.centerAndZoom(point, 15);
-                map.addOverlay(new BMap.Marker(point));
+                map.addOverlay(new BMap.Marker(point, {icon:gsIcon}));
                 $('input[name=lng]').val(point.lng);
                 $('input[name=lat]').val(point.lat);
             }else{
                 alert("您选择地址没有解析到结果!");
             }
         }, "石家庄市");
+    });
+
+
+    $('.submit').on('click', function(){
+        let form = $(this).parents().closest('form');
+
+        let name = $('input[name=name]').val();
+        let cover = $('input[name=cover]').val();
+        let telephone = $('input[name=telephone]').val();
+        let address = $('input[name=address]').val();
+        let lng = $('input[name=lng]').val();
+        let lat = $('input[name=lat]').val();
+        let message = '';
+        if (name==''){
+            message = '油站名称不可为空';
+            swal(message,{
+                icon: "warning",
+                button: "确定",
+            });
+            return false;
+        }
+        if (cover==''){
+            message = '请上传加油站图片';
+            swal(message,{
+                icon: "warning",
+                button: "确定",
+            });
+            return false;
+        }
+        if (telephone==''){
+            message = '座机号码不可为空';
+            swal(message,{
+                icon: "warning",
+                button: "确定",
+            });
+            return false;
+        }
+        if (lng=='' || lat==''){
+            message = '请搜索加油站确定加油站坐标';
+            swal(message,{
+                icon: "warning",
+                button: "确定",
+            });
+            return false;
+        }
+
+        let url = form.attr('action'),
+                data = form.serialize();
+        $.ajax({
+            url:url,
+            type:"POST",
+            data:data,
+            success:function(data){
+                swal("保存成功!", {
+                    icon: "success",
+                });
+                location.href='{{ route('gasStations.index') }}';
+            },
+            dataType:"json"
+        });
     });
 </script>
 @endpush

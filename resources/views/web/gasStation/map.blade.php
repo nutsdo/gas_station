@@ -18,7 +18,7 @@
 
     var myCity = new BMap.LocalCity();  //当前城市
     myCity.get(function(r){
-        console.log(r.name);
+        $('title').text(r.name);
         map.setCenter(r.name);
     })
 
@@ -62,8 +62,8 @@
                         var marker = new BMap.Marker(new BMap.Point(v.lng, v.lat), {icon:gsIcon});  // 创建标注
                         var click = 'goThere(this)';
                         var sContent =
-                                "<h5 style='margin:0 0 5px 0;padding:0.2em 0'>"+ v.name +"</h5>" +
-                                "<div style='float:right;margin:4px' data-lng='"+ lngCurrent + "' data-lat='"+ latCurrent + "' data-city='"+ v.city + "' data-destination='"+ v.lat+","+ v.lng + "' onclick='"+ click +"'><img class='go-station' src='/assets/images/station/go.png' width='20' title='"+ v.name +"'/>" +
+                                "<h5 style='margin:0 0 5px 0;padding:0.2em 0' onclick='goInfo(this)' data-id="+ v.id +">"+ v.name +"</h5>" +
+                                "<div style='float:right;margin:4px' data-lng='"+ lngCurrent + "' data-lat='"+ latCurrent + "' data-city='"+ v.city + "' data-destination='"+ v.lat+","+ v.lng + "' onclick='"+ click +"'><img class='go-station' src='/assets/images/station/goto.png' width='20' title='"+ v.name +"'/>" +
                                 "<span style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>去这里</span></div>" +
                                 "<p style='margin:0;line-height:1.5;font-size:13px;width: 80%'>"+ v.province + v.city + v.district + v.address +"</p>" +
                                 "</div>";
@@ -101,6 +101,13 @@
         var city = $this.data('city');
         //alert($this.attr('width'));
         location.href="http://api.map.baidu.com/direction?origin="+latCurrent+","+lngCurrent+"&destination="+destination+"&mode=driving&region="+city+"&output=html";
+    }
+    function goInfo(ele)
+    {
+        var $this = $(ele);
+        var id = $this.data('id');
+        //alert($this.attr('width'));
+        location.href="/gasStation/"+ id +"/show";
     }
 
 </script>

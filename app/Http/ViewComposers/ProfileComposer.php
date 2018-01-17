@@ -6,7 +6,7 @@
  * Date: 2018/1/3
  * Time: 下午11:50
  */
-
+namespace App\Http\ViewComposers;
 use Illuminate\View\View;
 
 class ProfileComposer
@@ -16,19 +16,7 @@ class ProfileComposer
      *
      * @var UserRepository
      */
-    protected $users;
-
-    /**
-     * Create a new profile composer.
-     *
-     * @param  UserRepository  $users
-     * @return void
-     */
-    public function __construct(UserRepository $users)
-    {
-        // Dependencies automatically resolved by service container...
-        $this->users = $users;
-    }
+    protected $user;
 
     /**
      * Bind data to the view.
@@ -38,6 +26,8 @@ class ProfileComposer
      */
     public function compose(View $view)
     {
-        $view->with('count', $this->users->count());
+        $this->user = \Illuminate\Support\Facades\Auth::guard('web')->user();
+        //dd($this->user);
+        $view->with('user', $this->user);
     }
 }

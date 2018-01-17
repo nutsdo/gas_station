@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use Barryvdh\Debugbar\Controllers\BaseController;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -29,10 +28,11 @@ class GasStationsController extends BaseController
 
     public function __construct(GasStationRepository $repository, GasStationValidator $validator)
     {
+        parent::__construct();
+
         $this->repository = $repository;
         $this->validator  = $validator;
     }
-
 
     /**
      * Display a listing of the resource.
@@ -77,7 +77,7 @@ class GasStationsController extends BaseController
             $gasStation = $this->repository->create($request->except('_token'));
 
             $response = [
-                'message' => 'GasStation created.',
+                'message' => '保存成功.',
                 'data'    => $gasStation->toArray(),
             ];
 

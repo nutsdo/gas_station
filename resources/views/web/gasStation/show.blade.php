@@ -23,7 +23,7 @@
                     </ul>
                 </div>
                 <div class="go">
-                    {{ Html::image('assets/images/station/go.png',null,['width'=>40]) }}
+                    {{ Html::image('assets/images/station/goto.png',null,['width'=>40]) }}
                     <a href="javascript:;" class="go-there"
                        data-destination="{{ $station->lat.','.$station->lng }}" data-city="{{ $station->city }}"
                     >去这里</a>

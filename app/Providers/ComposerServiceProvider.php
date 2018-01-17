@@ -23,7 +23,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         // Using class based composers...
         View::composer(
-            'profile', 'App\Http\ViewComposers\ProfileComposer'
+            'dashboard.*', 'App\Http\ViewComposers\ProfileComposer'
         );
 
         // Using Closure based composers...

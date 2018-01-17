@@ -16,7 +16,7 @@
     <meta name="description" content="Xenon Boostrap Admin Panel" />
     <meta name="author" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>柚子科技 - 后台管理系统</title>
+    <title>加油邯郸 - 后台管理系统</title>
     {!! Html::style('assets/css/fonts/linecons/css/linecons.css') !!}
     {!! Html::style('assets/css/fonts/fontawesome/css/font-awesome.min.css') !!}
     {!! Html::style('assets/css/bootstrap.css') !!}
@@ -42,7 +42,7 @@
     </script>
 
 </head>
-<body class="page-body">
+<body class="page-body skin-facebook">
 
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
@@ -58,11 +58,11 @@
                 <!-- logo -->
                 <div class="logo">
                     <a href="{{ route('dashboard.home') }}" class="logo-expanded">
-                        {!! Html::image('assets/images/logo@2x.png', null, ['width'=> 80]) !!}
+                        {!! Html::image('assets/images/station/user.png', null, ['width'=> 40]) !!}
                     </a>
 
                     <a href="{{ route('dashboard.home') }}" class="logo-collapsed">
-                        {!! Html::image('assets/images/logo-collapsed@2x.png', null, ['width'=> 40]) !!}
+                        {!! Html::image('assets/images/station/user.png', null, ['width'=> 40]) !!}
                     </a>
                 </div>
 
@@ -144,9 +144,9 @@
 
                 <li class="dropdown user-profile">
                     <a href="#" data-toggle="dropdown">
-                        {!! Html::image('assets/images/user-4.png', 'user-image', ['class'=> 'img-circle img-inline userpic-32','width'=> 28]) !!}
+                        {!! Html::image('assets/images/station/user.png', 'user-image', ['class'=> 'img-circle img-inline userpic-32','width'=> 28]) !!}
                         <span>
-                            admin
+                            {{ $user->name }}
                             <i class="fa-angle-down"></i>
                         </span>
                     </a>
@@ -201,7 +201,7 @@
                 <!-- Add your copyright text here -->
                 <div class="footer-text">
                     &copy; 2018
-                    <strong>柚子科技</strong>
+                    <strong>加油邯郸</strong>
                     theme by <a href="javascript:;" target="_blank">柚子科技</a>
                 </div>
 

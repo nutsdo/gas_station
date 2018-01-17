@@ -112,7 +112,7 @@
 <div class="form-group">
     {!! Form::label('', '',['class'=>'control-label col-sm-2']) !!}
     <div class="col-sm-10">
-    {!! Form::submit($submitButtonText,['class'=>'btn btn-success']) !!}
+    {!! Form::button($submitButtonText,['class'=>'btn btn-success submit']) !!}
     {!! Form::reset('重置',['class'=>'btn btn-white']) !!}
     </div>
 </div>

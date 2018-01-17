@@ -187,6 +187,7 @@ return [
         //工具
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        \App\Providers\ComposerServiceProvider::class,
     ],
 
     /*

@@ -8,7 +8,7 @@ use App\Entities\Series;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class GasStationSeriesController extends Controller
+class GasStationSeriesController extends BaseController
 {
     public function __construct()
     {
