@@ -29,6 +29,7 @@
                     >去这里</a>
                 </div>
             </div>
+            <p>联系电话:{{ $station->telephone?$station->telephone:$station->phone }}</p>
             <p>
                 {{ Html::image('assets/images/station/my-icon.png',null,['width'=>20]) }}
                 {{ $station->province.$station->city.$station->distance.$station->address }}
@@ -54,7 +55,7 @@
     </div>
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading">
+        <div class="panel-heading panel_say">
             <a href="{{ route('station.comments.create',$station->id) }}">评论 <i class="fa fa-pencil-square-o"></i></a>
             <div class="panel-options pull-right">
                 <a href="{{ route('station.comments', $station->id) }}">

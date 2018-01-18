@@ -4,8 +4,8 @@ html,body{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .container{
-     padding-left: 0;
-     padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 .container-fluid .media-object {
     width: 80px;
@@ -81,9 +81,13 @@ html,body{
 .station-info ul{width:300px;height:27px;float:left;padding-left: 0px}
 .station-info ul li{width:27px;height:27px;background:url(../assets/images/station/star.gif) no-repeat;list-style-type:none;float:left;}
 .station-info ul .active{background:url(../assets/images/station/star.gif) no-repeat 0 -29px;}
+.station-info p{
+    padding-left: 9px;
+}
+
 /*.series{*/
-    /*white-space: nowrap;*/
-    /*width: 100%;*/
+/*white-space: nowrap;*/
+/*width: 100%;*/
 /*}*/
 .series ul{
     white-space: nowrap;
@@ -118,4 +122,61 @@ html,body{
 .media{
     margin: 5px;
     border-bottom: 1px solid #ccc;
+}
+/*--------------------*/
+.pull-left{
+    width: 25%;
+    height: 60px;
+    float: left;
+    overflow: hidden;
+}
+.media-body{
+    width: 70%;
+    overflow: hidden;
+    float: right;
+}
+.media_right{
+    min-width: 32%;
+    float: right;
+}
+.media_name{
+    width: 60%;
+    display: block;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.media-heading{
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+.media_right img{
+    float: left;
+    margin: 3px 0;
+}
+.media_right span{
+    float: left;
+}
+.clear{
+    clear: both;
+}
+.left_go{
+    position: relative;
+}
+.left_go::after{
+    content: "|";
+    width: 1px;
+    height: 60%;
+    position: absolute;
+    right: 0;
+    line-height: 35px;
+}
+.panel .panel_say{
+    padding-bottom: 0;
+    height: 35px;
+    line-height: 35px;
 }
