@@ -29,7 +29,7 @@
                     >去这里</a>
                 </div>
             </div>
-            <p>联系电话:{{ $station->telephone?$station->telephone:$station->phone }}</p>
+            <p>联系电话: <a href="tel:{{ $station->telephone?$station->telephone:$station->phone }}">{{ $station->telephone?$station->telephone:$station->phone }}</a></p>
             <p>
                 {{ Html::image('assets/images/station/my-icon.png',null,['width'=>20]) }}
                 {{ $station->province.$station->city.$station->distance.$station->address }}
