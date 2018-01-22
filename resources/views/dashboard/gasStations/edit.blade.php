@@ -152,7 +152,7 @@
             return false;
         }
         if (telephone==''){
-            message = '座机号码不可为空';
+            message = '电话号码不可为空';
             swal(message,{
                 icon: "warning",
                 button: "确定",

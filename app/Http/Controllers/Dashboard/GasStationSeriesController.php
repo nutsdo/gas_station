@@ -155,7 +155,6 @@ class GasStationSeriesController extends BaseController
                     'message' => $e->getMessage()
                 ]);
             }
-            dd($e->getMessage());
             return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
     }
@@ -166,9 +165,20 @@ class GasStationSeriesController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($gasStationId, $id)
     {
-        //
+        $deleted = GasStationSeries::where('gas_station_id', $gasStationId)
+            ->where('series_id', $id)->delete($id);
+
+        if (request()->wantsJson()) {
+
+            return response()->json([
+                'message' => '删除成功.',
+                'deleted' => $deleted,
+            ]);
+        }
+
+        return redirect()->back()->with('message', '删除成功.');
     }
 
     public function makeOptions($array)
