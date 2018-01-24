@@ -76,7 +76,7 @@ class SeriesController extends BaseController
             $series = $this->repository->create($request->except('_token'));
 
             $response = [
-                'message' => 'Series created.',
+                'message' => '油号已保存.',
                 'data'    => $series->toArray(),
             ];
 
@@ -85,7 +85,7 @@ class SeriesController extends BaseController
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('series.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -155,7 +155,7 @@ class SeriesController extends BaseController
             $series = $this->repository->update($request->all(), $id);
 
             $response = [
-                'message' => 'Series updated.',
+                'message' => '油号已保存.',
                 'data'    => $series->toArray(),
             ];
 
@@ -164,7 +164,7 @@ class SeriesController extends BaseController
                 return response()->json($response);
             }
 
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('series.index')->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {
@@ -194,11 +194,11 @@ class SeriesController extends BaseController
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'Series deleted.',
+                'message' => '油号已删除.',
                 'deleted' => $deleted,
             ]);
         }
 
-        return redirect()->back()->with('message', 'Series deleted.');
+        return redirect()->back()->with('message', '油号已删除.');
     }
 }

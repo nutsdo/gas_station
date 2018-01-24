@@ -59,14 +59,14 @@ class GasStationSeriesController extends BaseController
                 $gasStation->series()->attach($series_id, ['price' => $price]);
 
                 $response = [
-                    'message' => 'GasStation created.',
+                    'message' => '油号价格已保存.',
                     'data'    => $gasStation->toArray(),
                 ];
 
 
             }else{
                 $response = [
-                    'message' => '已存在.',
+                    'message' => '油号已存在.',
                     'data'    => $gasStation->toArray(),
                 ];
             }
@@ -74,7 +74,7 @@ class GasStationSeriesController extends BaseController
 
                 return response()->json($response);
             }
-            return redirect()->route('gasStations.index', ['gasStationId'=>$gasStationId])->with('message', $response['message']);
+            return redirect()->route('gasStations.series.index', ['gasStationId'=>$gasStationId])->with('message', $response['message']);
 
         } catch (\Exception $e) {
             if ($request->wantsJson()) {
@@ -83,7 +83,7 @@ class GasStationSeriesController extends BaseController
                     'message' => $e->getMessage()
                 ]);
             }
-            return redirect()->route('gasStations.index', ['gasStationId'=>$gasStationId])->withErrors($e->getMessage())->withInput();
+            return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
     }
 
@@ -147,7 +147,7 @@ class GasStationSeriesController extends BaseController
 
                 return response()->json($response);
             }
-            return redirect()->route('gasStations.index', ['gasStationId'=>$gasStationId])->with('message', $response['message']);
+            return redirect()->route('gasStations.series.index', ['gasStationId'=>$gasStationId])->with('message', $response['message']);
         } catch (\Exception $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -155,7 +155,7 @@ class GasStationSeriesController extends BaseController
                     'message' => $e->getMessage()
                 ]);
             }
-            return redirect()->route('gasStations.index', ['gasStationId'=>$gasStationId])->withErrors($e->getMessage())->withInput();
+            return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
     }
 
