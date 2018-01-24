@@ -83,7 +83,7 @@ class GasStationSeriesController extends BaseController
                     'message' => $e->getMessage()
                 ]);
             }
-            return redirect()->back()->withErrors($e->getMessage())->withInput();
+            return redirect()->route('gasStations.index', ['gasStationId'=>$gasStationId])->withErrors($e->getMessage())->withInput();
         }
     }
 
@@ -147,7 +147,7 @@ class GasStationSeriesController extends BaseController
 
                 return response()->json($response);
             }
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('gasStations.index', ['gasStationId'=>$gasStationId])->with('message', $response['message']);
         } catch (\Exception $e) {
             if ($request->wantsJson()) {
                 return response()->json([
@@ -155,7 +155,7 @@ class GasStationSeriesController extends BaseController
                     'message' => $e->getMessage()
                 ]);
             }
-            return redirect()->back()->withErrors($e->getMessage())->withInput();
+            return redirect()->route('gasStations.index', ['gasStationId'=>$gasStationId])->withErrors($e->getMessage())->withInput();
         }
     }
 
