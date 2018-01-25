@@ -15,3 +15,7 @@ Route::resource('gasStations.comments', 'GasStationCommentController');
 
 Route::resource('gasStations.series', 'GasStationSeriesController');
 
+Route::get('/user/edit', 'UserController@edit')->name('user.edit');
+
+Route::put('/user/update', 'UserController@update')->name('user.update');
+

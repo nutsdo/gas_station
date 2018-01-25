@@ -24,14 +24,14 @@
 
     map.enableScrollWheelZoom();
 
-        let myIcon = new BMap.Icon("{{ url('/assets/images/station/my-location.png') }}",new BMap.Size(20,20),{
-            //anchor: new BMap.Size(15,30),
-            imageSize: new BMap.Size(20,20)
-        });
-        let gsIcon = new BMap.Icon("{{ url('/assets/images/station/gs-station.png') }}",new BMap.Size(40,40),{
-            anchor: new BMap.Size(19,25),
-            imageSize: new BMap.Size(40,40)
-        });
+    let myIcon = new BMap.Icon("{{ url('/assets/images/station/my-location.png') }}",new BMap.Size(30,30),{
+        //anchor: new BMap.Size(15,30),
+        imageSize: new BMap.Size(30,30)
+    });
+    let gsIcon = new BMap.Icon("{{ url('/assets/images/station/gs-station.png') }}",new BMap.Size(40,40),{
+        anchor: new BMap.Size(19,25),
+        imageSize: new BMap.Size(40,40)
+    });
 
     //    var opts = {
     //        width : 250,     // 信息窗口宽度
@@ -48,7 +48,7 @@
             map.centerAndZoom(r.point,13);
             var latCurrent = r.point.lat;
             var lngCurrent = r.point.lng;
-//            console.log('我的位置：'+ latCurrent + ',' + lngCurrent);
+            console.log('我的位置：'+ latCurrent + ',' + lngCurrent);
 
             //添加标注
             $.ajax({
@@ -65,8 +65,7 @@
                                 "<h5 style='margin:0 0 5px 0;padding:0.2em 0' onclick='goInfo(this)' data-id="+ v.id +">"+ v.name +"</h5>" +
                                 "<div style='float:right;margin:4px' data-lng='"+ lngCurrent + "' data-lat='"+ latCurrent + "' data-city='"+ v.city + "' data-destination='"+ v.lat+","+ v.lng + "' onclick='"+ click +"'><img class='go-station' src='/assets/images/station/goto.png' width='20' title='"+ v.name +"'/>" +
                                 "<span style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>去这里</span></div>" +
-                                "<p style='margin:0;line-height:1.5;font-size:13px;width: 80%'>"+ v.province + v.city + v.district + v.address +"</p>" +
-                                "</div>";
+                                "<p style='margin:0;line-height:1.5;font-size:13px;width: 75%'>"+ v.province + v.city + v.district + v.address +"<span style='float:right;color: #00a8e6;' onclick='goInfo(this)' data-id="+ v.id + ">了解油价详情>></span></p>";
                         map.addOverlay(marker);               // 将标注添加到地图中
                         addClickHandler(sContent,marker);
                     })
