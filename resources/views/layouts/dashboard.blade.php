@@ -202,7 +202,7 @@
                 <div class="footer-text">
                     &copy; 2018
                     <strong>加油邯郸</strong>
-                    theme by <a href="javascript:;" target="_blank">石家庄壮业广告有限公司</a>
+                    theme by <a href="javascript:;" target="_blank">鼎林科技</a>
                 </div>
 
 

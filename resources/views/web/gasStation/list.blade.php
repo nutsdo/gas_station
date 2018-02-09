@@ -44,6 +44,7 @@
             let page=1;
             let last_page=1;
             let url='{{ route('index',['type'=>$type]) }}';
+            let order = "{{ $order }}";
             new Scrollload({
                 // container 和 content 两个配置的默认取的scrollload-container和scrollload-content类的dom。只要你按照以上的dom结构写，这两个配置是可以省略的
                 container: document.querySelector('.scrollload-container'),
@@ -61,7 +62,7 @@
                     $.ajax({
                         type: 'GET',
                         url: url,
-                        data : {lng:lngCurrent,lat:latCurrent},
+                        data : {lng:lngCurrent,lat:latCurrent,order:order},
                         dataType: 'json',
                         success: function(data){
                             // contentDom其实就是你的scrollload-content类的dom

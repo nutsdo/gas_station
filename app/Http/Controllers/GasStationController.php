@@ -67,7 +67,11 @@ class GasStationController extends Controller
                     $sort = 'DESC';
                     $query->orderBy($order,$sort);
                 }
-                $stations = $query->orderBy('distance','ASC')->paginate(10);
+                $stations = $query->orderBy('distance','ASC')->paginate(1);
+                if($type=='list'){
+                    $stations->appends(['type' => 'list']);
+                }
+
             }
         }
 
