@@ -90,14 +90,29 @@
     </div>
     {!! $errors->first('phone') !!}
 </div>
-
+<div class="form-group form-inline">
+    {!! Form::label('经度', '经度',['class'=>'control-label col-sm-2']) !!}
+    <div class="col-sm-2">
+        {!! Form::text('lng',null,[
+            'class'=>'form-control',
+            'placeholder'=>'请输入经度'
+        ]) !!}
+    </div>
+    {!! $errors->first('lng') !!}
+    {!! Form::label('纬度', '纬度',['class'=>'control-label col-sm-2']) !!}
+    <div class="col-sm-2">
+        {!! Form::text('lat',null,[
+            'class'=>'form-control',
+            'placeholder'=>'请输入纬度'
+        ]) !!}
+    </div>
+    {!! $errors->first('lat') !!}
+</div>
 <div class="form-group">
     <div id="baidu-map" class="col-sm-10 col-sm-offset-2" style="height: 500px;">
 
     </div>
 </div>
-{!! Form::hidden('lng') !!}
-{!! Form::hidden('lat') !!}
 <div class="form-group">
     {!! Form::label('', '',['class'=>'control-label col-sm-2']) !!}
     <div class="col-sm-10">
